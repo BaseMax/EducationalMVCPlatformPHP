@@ -60,31 +60,32 @@ Note: This is just an example list of API routes, and you may need to modify it 
 ## Database Schema
 
 ### Users
-- `id: int (primary key)
-- `name: varchar(255)
-- `email: varchar(255)
-- `password: varchar(255)
-- `created_at: timestamp
-- `updated_at: timestamp
+
+- `id`: int (primary key)
+- `name`: varchar(255)
+- `email`: varchar(255)
+- `password`: varchar(255)
+- `created_at`: timestamp
+- `updated_at`: timestamp
 
 ### Content
 
-- `id: int (primary key)
-- `title: varchar(255)
-- `description: text
-- `type: enum('video', 'lecture', 'quiz')
-- `content_file: varchar(255) (path to file)
-- `created_at: timestamp
-- `updated_at: timestamp
+- `id`: int (primary key)
+- `title`: varchar(255)
+- `description`: text
+- `type`: enum('video', 'lecture', 'quiz')
+- `content_file`: varchar(255) (path to file)
+- `created_at`: timestamp
+- `updated_at`: timestamp
 
 ### Progress
 
-- `id: int (primary key)
-- `user_id: int (foreign key to Users table)
-- `content_id: int (foreign key to Content table)
-- `completed: boolean
-- `created_at: timestamp
-- `updated_at: timestamp
+- `id`: int (primary key)
+- `user_id`: int (foreign key to Users table)
+- `content_id`: int (foreign key to Content table)
+- `completed`: boolean
+- `created_at`: timestamp
+- `updated_at`: timestamp
 
 ### Quizzes
 
