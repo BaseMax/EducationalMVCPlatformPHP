@@ -1,0 +1,15 @@
+{
+  "name": "max/educational-mvc-platform-php",
+  "autoload": {
+    "psr-4": {
+      "Application": "App/"
+    }
+  },
+  "authors": [
+    {
+      "name": "aliiahmadi",
+      "email": "aliahmadi.github@gmail.com"
+    }
+  ],
+  "require": {}
+}
