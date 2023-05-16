@@ -2,22 +2,27 @@
 
 namespace Application\Router;
 
+use Exception;
+
 class Router implements RouterInterface
 {
     /**
      * returns an array of route from routing table
+     * 
      * @var array
      */
     protected array $routes = [];
 
     /**
      * returns an array of route parameters
+     * 
      * @var array
      */
     protected array $params = [];
 
     /**
      * Adds a suffix onto the controller name
+     * 
      * @var string
      */
     protected string $controllerSuffix = "controller";
@@ -40,6 +45,22 @@ class Router implements RouterInterface
             $controllerString = $this->params["controller"];
             $controllerString = $this->transformUpperCamelCase($controllerString);
             $controllerString = $this->getNamespace($controllerString);
+
+            if (class_exists($controllerString)) {
+                $controllerObject = new $controllerString();
+                $action = $this->params["action"];
+                $action = $this->transformCamelCase($action);
+
+                if (is_callable([$controllerObject, $action])) {
+                    $controllerObject->$action();
+                } else {
+                    throw new Exception();
+                }
+            } else {
+                throw new Exception();
+            }
+        } else {
+            throw new Exception();
         }
     }
 
@@ -67,9 +88,23 @@ class Router implements RouterInterface
     }
 
 
+    /**
+     * @param string $string
+     * @return string
+     */
     public function transformUpperCamelCase(string $string): string
     {
         return str_replace(" ", "", ucwords(str_replace("-", " ", $string)));
+    }
+
+
+    /**
+     * @param string $string
+     * @return string
+     */
+    public function transformCamelCase(string $string): string
+    {
+        return lcfirst($this->transformUpperCamelCase($string));
     }
 
 
