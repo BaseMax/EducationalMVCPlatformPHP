@@ -46,6 +46,16 @@ class Migrate
      */
     public function users(): void
     {
+        $sql = "CREATE TABLE IF NOT EXISTS users (
+            id INT PRIMARY KEY,
+            name VARCHAR(255),
+            email VARCHAR(255),
+            password VARCHAR(255),
+            created_at TIMESTAMP,
+            updated_at TIMESTAMP
+        );";
+
+        ($this->db->prepare($sql))->execute();
     }
 
 
@@ -56,6 +66,17 @@ class Migrate
      */
     public function content(): void
     {
+        $sql = "CREATE TABLE IF NOT EXISTS content (
+            id INT PRIMARY KEY,
+            title VARCHAR(255),
+            description TEXT,
+            type ENUM('video', 'lecture', 'quiz'),
+            content_file VARCHAR(255),
+            created_at TIMESTAMP,
+            updated_at TIMESTAMP
+        );";
+
+        ($this->db->prepare($sql))->execute();
     }
 
     /**
@@ -65,6 +86,18 @@ class Migrate
      */
     public function progress(): void
     {
+        $sql = "CREATE TABLE IF NOT EXISTS progress (
+            id INT PRIMARY KEY,
+            user_id INT,
+            content_id INT,
+            completed BOOLEAN,
+            created_at TIMESTAMP,
+            updated_at TIMESTAMP,
+            FOREIGN KEY (user_id) REFERENCES users(id),
+            FOREIGN KEY (content_id) REFERENCES content(id)
+        );";
+
+        ($this->db->prepare($sql))->execute();
     }
 
     /**
@@ -74,6 +107,16 @@ class Migrate
      */
     public function quizzes(): void
     {
+        $sql = "CREATE TABLE IF NOT EXISTS quizzes (
+            id INT PRIMARY KEY,
+            content_id INT,
+            title VARCHAR(255),
+            created_at TIMESTAMP,
+            updated_at TIMESTAMP,
+            FOREIGN KEY (content_id) REFERENCES content(id)
+        );";
+
+        ($this->db->prepare($sql))->execute();
     }
 
     /**
@@ -83,6 +126,16 @@ class Migrate
      */
     public function questions(): void
     {
+        $sql = "CREATE TABLE IF NOT EXISTS questions (
+            id INT PRIMARY KEY,
+            quiz_id INT,
+            question TEXT,
+            created_at TIMESTAMP,
+            updated_at TIMESTAMP,
+            FOREIGN KEY (quiz_id) REFERENCES quizzes(id)
+        );";
+
+        ($this->db->prepare($sql))->execute();
     }
 
     /**
@@ -92,5 +145,16 @@ class Migrate
      */
     public function answers(): void
     {
+        $sql = "CREATE TABLE IF NOT EXISTS answers (
+            id INT PRIMARY KEY,
+            question_id INT,
+            answer TEXT,
+            correct BOOLEAN,
+            created_at TIMESTAMP,
+            updated_at TIMESTAMP,
+            FOREIGN KEY (question_id) REFERENCES questions(id)
+        );";
+
+        ($this->db->prepare($sql))->execute();
     }
 }
