@@ -4,8 +4,15 @@ namespace Application\Controllers;
 
 class AuthController extends Controller
 {
-    public function login($params)
+    public function register()
     {
-        return json_encode($params);
+    }
+
+    public function login()
+    {
+    }
+
+    public function logout()
+    {
     }
 }
