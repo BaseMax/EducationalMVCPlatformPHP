@@ -16,5 +16,11 @@
       "email": "aliahmadi.github@gmail.com"
     }
   ],
-  "require": {}
+  "require-dev": {
+    "kitloong/laravel-migrations-generator": "^6.10"
+  },
+  "require": {
+    "doctrine/orm": "^2.15",
+    "vlucas/phpdotenv": "^5.5"
+  }
 }
