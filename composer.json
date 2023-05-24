@@ -22,7 +22,7 @@
   "require": {
     "doctrine/orm": "^2.15",
     "vlucas/phpdotenv": "^5.5",
-    "doctrine/dbal": "^3.2",
+    "doctrine/dbal": "^3.6",
     "symfony/yaml": "^5.4",
     "symfony/cache": "^5.4"
   }

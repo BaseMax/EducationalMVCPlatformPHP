@@ -2,34 +2,35 @@
 
 namespace Application\Models;
 
+use Application\Database\Config;
 use Doctrine\DBAL\DriverManager;
-use Doctrine\ORM\EntityManager;
-use Doctrine\ORM\ORMSetup;
 
 class Model
 {
     /**
-     * Entity Manager for ORM
-     * 
-     * @var EntityManager $entityManager
+     * Connection to database
      */
-    protected EntityManager $entityManager;
+    protected $connection;
+
 
 
     /**
-     * Main constructor class of class
+     * Main constructor of class
+     * 
+     * @return void
      */
     public function __construct()
     {
-        $config = ORMSetup::createAttributeMetadataConfiguration(
-            paths: ["./../.." . "/App"],
-            isDevMode: true
-        );
+        $config = Config::config();
 
-        $connection = DriverManager::getConnection([
-            "driver" => "pdo_mysql",
-        ], $config);
+        $connectionParams = [
+            'dbname' => $config["db_name"],
+            'user' => $config["db_user"],
+            'password' => $config["db_password"],
+            'host' => $config["db_host"],
+            'driver' => $config["db_driver"],
+        ];
 
-        $this->entityManager = new EntityManager($connection, $config);
+        $this->connection = DriverManager::getConnection($connectionParams);
     }
 }
