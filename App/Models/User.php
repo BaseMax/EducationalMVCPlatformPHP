@@ -2,7 +2,7 @@
 
 namespace Application\Models;
 
-use Doctrine\ORM\Mapping as ORM;
+use Doctrine\DBAL\Query\QueryBuilder;
 
 class User extends Model
 {
@@ -23,10 +23,18 @@ class User extends Model
      */
     public static function all(): array
     {
-        $userInstance = new User();
+        $builder = (new User())->builder();
 
-        $stmt = $userInstance->connection->prepare("SELECT * FROM users");
+        return $builder->select("id")->from("users")->fetchAllAssociative();
+    }
 
-        return ($stmt->executeQuery())->fetchAllAssociative();
+    /**
+     * Returns Query Builder instance
+     * 
+     * @return QueryBuilder
+     */
+    public function builder(): QueryBuilder
+    {
+        return $this->builder;
     }
 }
