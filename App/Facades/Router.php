@@ -98,13 +98,21 @@ class Router extends Facade
         foreach (array_keys(self::$mapper[$method]) as $route) {
             $params = Helper::match($path, $route);
 
-            $instance = new self::$mapper[$method][$route][0];
-            $methodOfController = self::$mapper[$method][$route][1];
-            return call_user_func([$instance, $methodOfController], array_slice($params, 1));
+            if ($params) {
+                $instance = new self::$mapper[$method][$route][0];
+                $methodOfController = self::$mapper[$method][$route][1];
+                return call_user_func([$instance, $methodOfController], array_slice($params, 1));
+            }
         }
 
-        Response::statusCode(Response::$NOT_FOUND);
+        if (self::$mapper["fallback"] !== null) {
+            $instance = new self::$mapper["fallback"][0];
+            $methodOfController = self::$mapper["fallback"][1];
+            return call_user_func([$instance, $methodOfController]);
+        }
 
-        if (self::$mapper["fallback"] !== null) return call_user_func(self::$mapper["fallback"]);
+        return Response::json([
+            "detail" => "Oops! The page you're looking for could not be found."
+        ], Response::$NOT_FOUND);
     }
 }

@@ -18,4 +18,8 @@ class Config extends Database
             "db_password" => $_ENV["DB_PASSWORD"]
         ];
     }
+
+    /**
+     * 
+     */
 }
