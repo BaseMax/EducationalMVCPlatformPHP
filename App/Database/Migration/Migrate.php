@@ -31,10 +31,10 @@ class Migrate
     {
         $this->config = Config::config();
 
-        $db_name = $this->config["DB_NAME"];
-        $db_host = $this->config["DB_HOST"];
-        $db_user = $this->config["DB_USER"];
-        $db_password = $this->config["DB_PASSWORD"];
+        $db_name = $this->config["db_name"];
+        $db_host = $this->config["db_host"];
+        $db_user = $this->config["db_user"];
+        $db_password = $this->config["db_password"];
 
         $this->db = new PDO("mysql:host=$db_host;dbname=$db_name", $db_user, $db_password);
     }
