@@ -13,11 +13,21 @@ class Application extends Facade
 
 
     /**
+     * Main constructor class
+     */
+    public function __construct()
+    {
+        $this->router = new Router();
+    }
+
+
+    /**
      * Start application for processing request
      * 
      * @return string
      */
     public function run(): string
     {
+        return $this->router->resolve();
     }
 }
