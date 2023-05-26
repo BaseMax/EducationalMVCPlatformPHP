@@ -2,6 +2,7 @@
 
 namespace Application\Models;
 
+use Application\Facades\Hash;
 use DateTime;
 use Doctrine\DBAL\Query\QueryBuilder;
 use Doctrine\DBAL\Types\Types;
@@ -133,6 +134,16 @@ class User extends Model
     }
 
     /**
+     * Getter for password
+     * 
+     * @return string
+     */
+    public function getPassword(): string
+    {
+        return $this->password;
+    }
+
+    /**
      * Setter for name
      * 
      * @param string $name
@@ -166,7 +177,7 @@ class User extends Model
      */
     public function setPassword(string $password): User
     {
-        $this->password = $password;
+        $this->password = Hash::hash($password);
 
         return $this;
     }

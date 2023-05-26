@@ -52,7 +52,7 @@ class Quiz extends Model
     /**
      * 
      */
-    #[OneToMany(targetEntity: Question::class, mappedBy: "quiz")]
+    #[OneToMany(targetEntity: Question::class, mappedBy: "quiz", cascade: ["persist", "remove"])]
     private Collection $questions;
 
 

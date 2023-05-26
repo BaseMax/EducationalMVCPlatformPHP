@@ -18,8 +18,6 @@ Router::post("/api/register", [AuthController::class, "register"]); // Register 
 
 Router::post("/api/login", [AuthController::class, "login"]); // Login a user
 
-Router::post("/api/logout", [AuthController::class, "logout"]); // Logout a user
-
 
 
 // Content

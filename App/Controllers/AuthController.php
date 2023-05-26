@@ -3,6 +3,7 @@
 namespace Application\Controllers;
 
 use Application\Exceptions\ValidationError;
+use Application\Facades\JWT;
 use Application\Facades\Request;
 use Application\Facades\Response;
 use Application\Models\User;
@@ -30,7 +31,7 @@ class AuthController extends Controller
         $user = (new User())
             ->setName($userData["name"])
             ->setEmail($userData["email"])
-            ->setPassword("123456789")
+            ->setPassword($userData["password"])
             ->setCreatedAt(new DateTime())
             ->setUpdatedAt(new DateTime());
 
@@ -39,16 +40,16 @@ class AuthController extends Controller
 
         return Response::json(
             [
-                "detail" => "ok"
+                "token" => JWT::encode([
+                    $user->getName(),
+                    $user->getEmail(),
+                    $user->getPassword()
+                ])
             ]
         );
     }
 
     public function login()
-    {
-    }
-
-    public function logout()
     {
     }
 }
