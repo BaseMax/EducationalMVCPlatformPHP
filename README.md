@@ -8,7 +8,6 @@ This is an educational platform where users can access and consume educational c
 - Upload and manage educational content such as videos, lectures, and quizzes
 - Progress tracking for users to keep track of their progress through educational content
 - Quiz grading to evaluate user knowledge and understanding
-- Search functionality to find educational content
 
 ## API Routes
 
@@ -138,6 +137,30 @@ Note: This is just an example list of API routes, and you may need to modify it 
 - `updated_at`: timestamp
 
 Note: This is just an example schema, and you may need to modify it based on the specific requirements.
+
+## Instalation
+Clone this repository and install dependencies:
+```console
+git clone https://github.com/BaseMax/EducationalMVCPlatformPHP.git
+```
+```shell
+cd EducationalMVCPlatformPHP
+```
+```shell
+composer install
+```
+
+Now copy .env.example to .env and fill database credentials in .env file:
+```console
+cp .env.example .env
+```
+You can run project now:
+```console
+cd public
+```
+```console
+php -S localhost:5000
+```
 
 ## Authors
 
