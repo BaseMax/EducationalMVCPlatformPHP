@@ -14,6 +14,7 @@ This is an educational platform where users can access and consume educational c
 ### Authentication
 
 - `POST /api/register`: Register a new user
+
 ```console
   curl --location 'http://localhost:5000/api/register' \
   --header 'Content-Type: application/x-www-form-urlencoded' \
@@ -21,13 +22,17 @@ This is an educational platform where users can access and consume educational c
   --data-urlencode 'email=AliAhmadi@gmail.com' \
   --data-urlencode 'password=123456789'
 ```
+
 Response:
+
 ```json
 {
     "token":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.WyJBbGlBaG1hZGkiLCJBbGlBaG1hZGlAZ21haWwuY29tIiwiJDJ5JDEwJFV2RE9pM3dVMFVJdE1jOWVkS09nWHVWVWdOdEFEWmw0MmdtZ0RIQzI5VVVWbkgzUHhhQkVTIl0.pJrm81UK1aysfLWM2tyzeWDTugsdoBqBZj3vsj9z1OA"
 }
 ```
+
 - `POST /api/login`: Login a user
+
 ```console
   curl --location 'http://localhost:5000/api/login' \
   --header 'Content-Type: application/x-www-form-urlencoded' \
@@ -35,7 +40,9 @@ Response:
   --data-urlencode 'email=AliAhmadi@gmail.com' \
   --data-urlencode 'password=123456789'
 ```
+
 Response:
+
 ```json
 {
     "token":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.WyJBbGlBaG1hZGkiLCJBbGlBaG1hZGlAZ21haWwuY29tIiwiJDJ5JDEwJFV2RE9pM3dVMFVJdE1jOWVkS09nWHVWVWdOdEFEWmw0MmdtZ0RIQzI5VVVWbkgzUHhhQkVTIl0.pJrm81UK1aysfLWM2tyzeWDTugsdoBqBZj3vsj9z1OA"
@@ -139,26 +146,28 @@ Note: This is just an example list of API routes, and you may need to modify it 
 Note: This is just an example schema, and you may need to modify it based on the specific requirements.
 
 ## Instalation
+
 Clone this repository and install dependencies:
+
 ```console
 git clone https://github.com/BaseMax/EducationalMVCPlatformPHP.git
 ```
+
 ```shell
 cd EducationalMVCPlatformPHP
-```
-```shell
 composer install
 ```
 
-Now copy .env.example to .env and fill database credentials in .env file:
+Now copy `.env.example` to `.env` and fill database credentials in `.env` file:
+
 ```console
 cp .env.example .env
 ```
-You can run project now:
+
+You can run the project now:
+
 ```console
 cd public
-```
-```console
 php -S localhost:5000
 ```
 
