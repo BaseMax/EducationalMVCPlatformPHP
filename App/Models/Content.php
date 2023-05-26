@@ -58,6 +58,15 @@ class Content extends Model
     #[Column()]
     private DateTime $updated_at;
 
+
+    /**
+     * @return void
+     */
+    public function __construct()
+    {
+        parent::__construct();
+    }
+
     /**
      * Getter for id
      * 

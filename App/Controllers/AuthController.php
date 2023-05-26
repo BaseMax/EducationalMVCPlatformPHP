@@ -8,7 +8,6 @@ use Application\Facades\JWT;
 use Application\Facades\Request;
 use Application\Facades\Response;
 use Application\Models\User;
-use Rakit\Validation\Validator;
 use DateTime;
 
 class AuthController extends Controller

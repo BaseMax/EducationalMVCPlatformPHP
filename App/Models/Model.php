@@ -67,4 +67,14 @@ class Model
     {
         return $this->entityManager;
     }
+
+    /**
+     * Returns Query Builder instance
+     * 
+     * @return QueryBuilder
+     */
+    public function builder(): QueryBuilder
+    {
+        return $this->builder;
+    }
 }

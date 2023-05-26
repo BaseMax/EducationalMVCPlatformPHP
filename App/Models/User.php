@@ -76,15 +76,6 @@ class User extends Model
         return $builder->select("*")->from("users")->fetchAllAssociative();
     }
 
-    /**
-     * Returns Query Builder instance
-     * 
-     * @return QueryBuilder
-     */
-    public function builder(): QueryBuilder
-    {
-        return $this->builder;
-    }
 
     /**
      * Find an user with its id

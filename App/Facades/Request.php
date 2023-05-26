@@ -2,6 +2,8 @@
 
 namespace Application\Facades;
 
+use Application\Exceptions\ValidationError;
+
 class Request extends Facade
 {
     /**
@@ -57,5 +59,19 @@ class Request extends Facade
     public static function get(): array
     {
         return $_GET;
+    }
+
+    /**
+     * Returns JWT token that user sended that
+     * 
+     * @return string
+     */
+    public static function jwt(): string
+    {
+        $jwt = $_SERVER['HTTP_AUTHORIZATION'] ?? '';
+
+        if (!$jwt) ValidationError::error(["unauthorized user."], 401);
+
+        return $jwt;
     }
 }
