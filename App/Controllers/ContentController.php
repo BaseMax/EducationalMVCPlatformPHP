@@ -63,13 +63,48 @@ class ContentController extends Controller
         ]);
     }
 
-    public function update()
+    public function update($id)
     {
         $this->auth();
+
+        $userData = Request::update();
+
+        $content = (new Content())
+            ->getEntityManager()
+            ->getRepository(Content::class)
+            ->findOneBy([
+                "id" => $id
+            ]);
+
+        if (isset($userData["title"])) $content->setTitle($userData["title"]);
+
+        if (isset($userData["description"])) $content->setDescription($userData["description"]);
+
+        if (isset($userData["type"])) $content->setType($userData["type"]);
+
+        if (isset($userData["content_file"])) $content->setContentFile($userData["content_file"]);
+
+        (new Content())->getEntityManager()->flush();
+
+        return Response::json([
+            "detail" => "content updated successfuly."
+        ]);
     }
 
-    public function destroy()
+    public function destroy($id)
     {
         $this->auth();
+
+        (new Content())
+            ->builder()
+            ->delete()
+            ->from("content")
+            ->where("id = ?")
+            ->setParameter(0, $id)
+            ->executeQuery();
+
+        return Response::json([
+            "detail" => "content deleted successfuly"
+        ]);
     }
 }
