@@ -50,4 +50,44 @@ class Answer extends Model
      */
     #[Column()]
     private DateTime $updated_at;
+
+    /**
+     * Getter for id
+     * 
+     * @return int
+     */
+    public function getId(): int
+    {
+        return $this->id;
+    }
+
+    /**
+     * Getter for question_id
+     * 
+     * @return int
+     */
+    public function getQuestionId(): int
+    {
+        return $this->question_id;
+    }
+
+    /**
+     * Getter for answer
+     * 
+     * @return string
+     */
+    public function getAnswer(): string
+    {
+        return $this->answer;
+    }
+
+    /**
+     * Getter for correct
+     * 
+     * @return bool
+     */
+    public function getCorrect(): bool
+    {
+        return $this->correct;
+    }
 }

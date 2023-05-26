@@ -72,7 +72,7 @@ class User extends Model
     {
         $builder = (new User())->builder();
 
-        return $builder->select("id")->from("users")->fetchAllAssociative();
+        return $builder->select("*")->from("users")->fetchAllAssociative();
     }
 
     /**
@@ -130,5 +130,70 @@ class User extends Model
     public function getEmail(): string
     {
         return $this->email;
+    }
+
+    /**
+     * Setter for name
+     * 
+     * @param string $name
+     * @return this
+     */
+    public function setName(string $name): User
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Setter for email
+     * 
+     * @param string $email
+     * @return this
+     */
+    public function setEmail(string $email): User
+    {
+        $this->email = $email;
+
+        return $this;
+    }
+
+    /**
+     * Setter for password
+     * 
+     * @param string $password
+     * @return this
+     */
+    public function setPassword(string $password): User
+    {
+        $this->password = $password;
+
+        return $this;
+    }
+
+    /**
+     * Setter for created_at
+     * 
+     * @param DateTime $now
+     * @return this
+     */
+    public function setCreatedAt(DateTime $now): User
+    {
+        $this->created_at = $now;
+
+        return $this;
+    }
+
+    /**
+     * Setter for updated_at
+     * 
+     * @param DateTime $now
+     * @return this
+     */
+    public function setUpdatedAt(DateTime $now): User
+    {
+        $this->updated_at = $now;
+
+        return $this;
     }
 }

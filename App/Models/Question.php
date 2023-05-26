@@ -8,6 +8,7 @@ use Doctrine\ORM\Mapping\Column;
 use Doctrine\ORM\Mapping\Entity;
 use Doctrine\ORM\Mapping\GeneratedValue;
 use Doctrine\ORM\Mapping\Id;
+use Doctrine\ORM\Mapping\ManyToOne;
 use Doctrine\ORM\Mapping\Table;
 
 #[Entity()]
@@ -45,6 +46,9 @@ class Question extends Model
     #[Column()]
     private DateTime $updated_at;
 
+    #[ManyToOne(inversedBy: "questions")]
+    private Quiz  $quiz;
+
     /**
      * Getter for id
      * 
@@ -73,5 +77,26 @@ class Question extends Model
     public function getQuestion(): string
     {
         return $this->question;
+    }
+
+    /**
+     * Getter for quiz
+     * 
+     * @return Quiz
+     */
+    public function getQuiz(): Quiz
+    {
+        return $this->quiz;
+    }
+
+    /**
+     * Setter for quiz
+     * 
+     * @param Quiz $quiz
+     * @return void
+     */
+    public function setQuiz(Quiz $quiz): void
+    {
+        $this->quiz = $quiz;
     }
 }

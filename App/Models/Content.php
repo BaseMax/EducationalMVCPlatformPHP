@@ -57,4 +57,54 @@ class Content extends Model
      */
     #[Column()]
     private DateTime $updated_at;
+
+    /**
+     * Getter for id
+     * 
+     * @return int
+     */
+    public function getId(): int
+    {
+        return $this->id;
+    }
+
+    /**
+     * Getter for title
+     * 
+     * @return string
+     */
+    public function getTitle(): string
+    {
+        return $this->title;
+    }
+
+    /**
+     * Getter for description
+     * 
+     * @return string
+     */
+    public function getDescription(): string
+    {
+        return $this->description;
+    }
+
+    /**
+     * Getter for type
+     * 
+     * @return Type
+     */
+    public function getType(): Type
+    {
+        return $this->type;
+    }
+
+    /**
+     * Getter for content_file
+     * 
+     * @return string
+     */
+    public function getContentFile(): string
+    {
+        return $this->content_file;
+    }
 }

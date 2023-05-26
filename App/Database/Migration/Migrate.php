@@ -47,7 +47,7 @@ class Migrate
     public function users(): void
     {
         $sql = "CREATE TABLE IF NOT EXISTS users (
-            id INT PRIMARY KEY,
+            id INT PRIMARY KEY AUTO_INCREMENT,
             name VARCHAR(255),
             email VARCHAR(255),
             password VARCHAR(255),
@@ -67,7 +67,7 @@ class Migrate
     public function content(): void
     {
         $sql = "CREATE TABLE IF NOT EXISTS content (
-            id INT PRIMARY KEY,
+            id INT PRIMARY KEY AUTO_INCREMENT,
             title VARCHAR(255),
             description TEXT,
             type ENUM('video', 'lecture', 'quiz'),
@@ -87,7 +87,7 @@ class Migrate
     public function progress(): void
     {
         $sql = "CREATE TABLE IF NOT EXISTS progress (
-            id INT PRIMARY KEY,
+            id INT PRIMARY KEY AUTO_INCREMENT,
             user_id INT,
             content_id INT,
             completed BOOLEAN,
@@ -108,7 +108,7 @@ class Migrate
     public function quizzes(): void
     {
         $sql = "CREATE TABLE IF NOT EXISTS quizzes (
-            id INT PRIMARY KEY,
+            id INT PRIMARY KEY AUTO_INCREMENT,
             content_id INT,
             title VARCHAR(255),
             created_at TIMESTAMP,
@@ -127,7 +127,7 @@ class Migrate
     public function questions(): void
     {
         $sql = "CREATE TABLE IF NOT EXISTS questions (
-            id INT PRIMARY KEY,
+            id INT PRIMARY KEY AUTO_INCREMENT,
             quiz_id INT,
             question TEXT,
             created_at TIMESTAMP,
@@ -146,7 +146,7 @@ class Migrate
     public function answers(): void
     {
         $sql = "CREATE TABLE IF NOT EXISTS answers (
-            id INT PRIMARY KEY,
+            id INT PRIMARY KEY AUTO_INCREMENT,
             question_id INT,
             answer TEXT,
             correct BOOLEAN,
