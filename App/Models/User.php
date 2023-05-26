@@ -7,6 +7,27 @@ use Doctrine\DBAL\Query\QueryBuilder;
 class User extends Model
 {
     /**
+     * @var int $id
+     */
+    private int $id;
+
+    /**
+     * @var string $name
+     */
+    private string $name;
+
+    /**
+     * @var string $email
+     */
+    private string $email;
+
+    /**
+     * @var string $password
+     */
+    private string $password;
+
+
+    /**
      * Main constructor of class
      * 
      * @return void
@@ -37,4 +58,25 @@ class User extends Model
     {
         return $this->builder;
     }
+
+    /**
+     * Find an user with its id
+     * 
+     * @param int $id
+     * @return array|bool
+     */
+    public static function find(int $id): array|bool
+    {
+        $builder = (new User())->builder();
+
+        return $builder->select("*")
+            ->from("users")
+            ->where("id = ?")
+            ->setParameter(0, $id)
+            ->fetchAssociative();
+    }
+
+    /**
+     * 
+     */
 }

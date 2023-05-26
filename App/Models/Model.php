@@ -3,6 +3,7 @@
 namespace Application\Models;
 
 use Application\Database\Config;
+use Doctrine\DBAL\Connection;
 use Doctrine\DBAL\DriverManager;
 use Doctrine\DBAL\Query\QueryBuilder;
 
@@ -10,8 +11,10 @@ class Model
 {
     /**
      * Connection to database
+     * 
+     * @var Connection $connection
      */
-    protected $connection;
+    protected Connection $connection;
 
 
     /**
