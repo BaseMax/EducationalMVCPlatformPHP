@@ -14,7 +14,7 @@ class ContentController extends Controller
     {
         $this->auth();
 
-        $contents = (new Content)->builder()
+        $contents = (new Content())->builder()
             ->select("*")
             ->from("content")
             ->fetchAllAssociative();
@@ -25,6 +25,16 @@ class ContentController extends Controller
     public function show($id)
     {
         $this->auth();
+
+        $content = (new Content())
+            ->builder()
+            ->select("*")
+            ->from("content")
+            ->where("id = ?")
+            ->setParameter(0, $id)
+            ->fetchAssociative();
+
+        return Response::json([$content]);
     }
 
     public function store()
