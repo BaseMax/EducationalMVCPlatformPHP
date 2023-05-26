@@ -2,29 +2,55 @@
 
 namespace Application\Models;
 
+use DateTime;
 use Doctrine\DBAL\Query\QueryBuilder;
+use Doctrine\DBAL\Types\Types;
+use Doctrine\ORM\Mapping\Column;
+use Doctrine\ORM\Mapping\Entity;
+use Doctrine\ORM\Mapping\GeneratedValue;
+use Doctrine\ORM\Mapping\Id;
+use Doctrine\ORM\Mapping\Table;
 
+#[Entity()]
+#[Table("users")]
 class User extends Model
 {
     /**
      * @var int $id
      */
+    #[Id]
+    #[Column(), GeneratedValue()]
     private int $id;
 
     /**
      * @var string $name
      */
+    #[Column(type: Types::STRING)]
     private string $name;
 
     /**
      * @var string $email
      */
+    #[Column(type: Types::STRING)]
     private string $email;
 
     /**
      * @var string $password
      */
+    #[Column(type: Types::STRING)]
     private string $password;
+
+    /**
+     * @var DateTime $created_at
+     */
+    #[Column()]
+    private DateTime $created_at;
+
+    /**
+     * @var DateTime $updated_at
+     */
+    #[Column()]
+    private DateTime $updated_at;
 
 
     /**
@@ -77,6 +103,32 @@ class User extends Model
     }
 
     /**
+     * Getter for id
      * 
+     * @return int
      */
+    public function getId(): int
+    {
+        return $this->id;
+    }
+
+    /**
+     * Getter for name
+     * 
+     * @return string
+     */
+    public function getName(): string
+    {
+        return $this->name;
+    }
+
+    /**
+     * Getter for email
+     * 
+     * @return string
+     */
+    public function getEmail(): string
+    {
+        return $this->email;
+    }
 }
