@@ -18,9 +18,9 @@ This is an educational platform where users can access and consume educational c
 ```console
   curl --location 'http://localhost:5000/api/register' \
   --header 'Content-Type: application/x-www-form-urlencoded' \
-  --data-urlencode 'name=AliAhmadi' \
-  --data-urlencode 'email=AliAhmadi@gmail.com' \
-  --data-urlencode 'password=123456789'
+  --data-urlencode 'name=fakename' \
+  --data-urlencode 'email=fakename@gmail.com' \
+  --data-urlencode 'password=fakepass'
 ```
 
 Response:
@@ -36,9 +36,9 @@ Response:
 ```console
   curl --location 'http://localhost:5000/api/login' \
   --header 'Content-Type: application/x-www-form-urlencoded' \
-  --data-urlencode 'name=AliAhmadi' \
-  --data-urlencode 'email=AliAhmadi@gmail.com' \
-  --data-urlencode 'password=123456789'
+  --data-urlencode 'name=fakename' \
+  --data-urlencode 'email=fakename@gmail.com' \
+  --data-urlencode 'password=fakepass'
 ```
 
 Response:
