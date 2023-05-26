@@ -2,11 +2,10 @@
 
 namespace Application\Controllers;
 
-use Application\Facades\JWT;
 use Application\Facades\Request;
 use Application\Facades\Response;
 use Application\Models\Content;
-use Application\Models\User;
+use DateTime;
 
 class ContentController extends Controller
 {
@@ -40,6 +39,28 @@ class ContentController extends Controller
     public function store()
     {
         $this->auth();
+
+        $userData = $this->validate(Request::post(), [
+            "title"        => "required",
+            "description"  => "required",
+            "type"         => "required",
+            "content_file" => "required"
+        ]);
+
+        $content = (new Content())
+            ->setTitle($userData["title"])
+            ->setDescription($userData["description"])
+            ->setType($userData["type"])
+            ->setContentFile($userData["content_file"])
+            ->setCreatedAt(new DateTime())
+            ->setUpdatedAt(new DateTime());
+
+        $content->getEntityManager()->persist($content);
+        $content->getEntityManager()->flush();
+
+        return Response::json([
+            "detail" => "content created successfuly."
+        ]);
     }
 
     public function update()

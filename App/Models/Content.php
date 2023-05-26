@@ -116,4 +116,82 @@ class Content extends Model
     {
         return $this->content_file;
     }
+
+    /**
+     * Setter for title
+     * 
+     * @param string $title
+     * @return Content
+     */
+    public function setTitle(string $title): Content
+    {
+        $this->title = $title;
+
+        return $this;
+    }
+
+    /**
+     * Setter for description
+     * 
+     * @param string $description
+     * @return Content
+     */
+    public function setDescription(string $description): Content
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Setter for type
+     * 
+     * @param Type $type
+     * @return Content
+     */
+    public function setType(Type $type): Content
+    {
+        $this->type = $type;
+
+        return $this;
+    }
+
+    /**
+     * Setter for content_file
+     * 
+     * @param string $content_file
+     * @return Content
+     */
+    public function setContentFile(string $content_file): Content
+    {
+        $this->content_file = $content_file;
+
+        return $this;
+    }
+
+    /**
+     * Setter for created_at
+     * 
+     * @param DateTime $created_at
+     * @return Content
+     */
+    public function setCreatedAt(DateTime $created_at): Content
+    {
+        $this->created_at = $created_at;
+
+        return $this;
+    }
+
+    /**
+     * Setter for updated_at
+     * 
+     * @param DateTime updated_at
+     * @return Content
+     */
+    public function setUpdatedAt(DateTime $updated_at): Content
+    {
+        $this->updated_at = $updated_at;
+
+        return $this;
+    }
 }
