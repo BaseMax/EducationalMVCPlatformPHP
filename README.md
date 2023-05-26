@@ -29,7 +29,19 @@ Response:
 }
 ```
 - `POST /api/login`: Login a user
-- `POST /api/logout`: Logout a user
+```console
+  curl --location 'http://localhost:5000/api/login' \
+  --header 'Content-Type: application/x-www-form-urlencoded' \
+  --data-urlencode 'name=AliAhmadi' \
+  --data-urlencode 'email=AliAhmadi@gmail.com' \
+  --data-urlencode 'password=123456789'
+```
+Response:
+```json
+{
+    "token":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.WyJBbGlBaG1hZGkiLCJBbGlBaG1hZGlAZ21haWwuY29tIiwiJDJ5JDEwJFV2RE9pM3dVMFVJdE1jOWVkS09nWHVWVWdOdEFEWmw0MmdtZ0RIQzI5VVVWbkgzUHhhQkVTIl0.pJrm81UK1aysfLWM2tyzeWDTugsdoBqBZj3vsj9z1OA"
+}
+```
 
 ### Content
 
