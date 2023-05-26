@@ -62,7 +62,7 @@ class QuizController extends Controller
     {
         $this->auth();
 
-        $userData = $this->validate(Request::post(), [
+        $userData = $this->validate(Request::update(), [
             "content_id"  => "required|numeric",
             "title"       => "required"
         ]);
