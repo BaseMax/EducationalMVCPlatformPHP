@@ -24,6 +24,8 @@
     "vlucas/phpdotenv": "^5.5",
     "doctrine/dbal": "^3.6",
     "symfony/yaml": "^5.4",
-    "symfony/cache": "^6.2"
+    "symfony/cache": "^6.2",
+    "rakit/validation": "^1.4",
+    "firebase/php-jwt": "^6.5"
   }
 }

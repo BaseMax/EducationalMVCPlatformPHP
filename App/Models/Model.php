@@ -6,6 +6,8 @@ use Application\Database\Config;
 use Doctrine\DBAL\Connection;
 use Doctrine\DBAL\DriverManager;
 use Doctrine\DBAL\Query\QueryBuilder;
+use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\Tools\Setup;
 
 class Model
 {
@@ -23,6 +25,13 @@ class Model
      * @var QueryBuilder $builder
      */
     protected QueryBuilder $builder;
+
+    /**
+     * Entity manager
+     * 
+     * @var EntityManager $entityManager
+     */
+    protected EntityManager $entityManager;
 
 
 
@@ -45,5 +54,17 @@ class Model
 
         $this->connection = DriverManager::getConnection($connectionParams);
         $this->builder = $this->connection->createQueryBuilder();
+        $this->entityManager = EntityManager::create($connectionParams, Setup::createAttributeMetadataConfiguration([__DIR__]));
+    }
+
+    /**
+     * Access layer for Entity managment
+     * 
+     * @return EntityManager
+     */
+
+    public function getEntityManager(): EntityManager
+    {
+        return $this->entityManager;
     }
 }
